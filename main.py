@@ -12,6 +12,8 @@ class Vector:
 	def to_form(self, vector):
 		magnitude = math.sqrt(sum(component ** 2 for component in vector))
         
-        if magnitude == 0:
-            directions = [0 for _ in vector]
-        else: directions = [component / magnitude for component in vector]
+		if magnitude == 0:
+			directions = [0 for _ in vector]
+		else:
+			directions = [component / magnitude for component in vector]
+		# indent test
