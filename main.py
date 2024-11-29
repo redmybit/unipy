@@ -1,4 +1,6 @@
 
+import math
+
 class Vector:
 	def __init__(self, position : list = None) -> None:
 		self.position = position
