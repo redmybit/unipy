@@ -16,4 +16,3 @@ class Vector:
 			directions = [0 for _ in vector]
 		else:
 			directions = [component / magnitude for component in vector]
-		# indent test
