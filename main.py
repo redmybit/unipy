@@ -1,5 +1,6 @@
 import math
 
+# infinite dimension vector class
 class Vector:
     def __init__(self, position = [0, 0]) -> None:
         self.position = position # set the vector's position
@@ -9,8 +10,9 @@ class Vector:
 	    
 	self.updated() # update the vectors magnitude and direction
 
+    # updates the vector's magnitude and direction based off it's position
     def update(self):
-	self.magnitude, self.direction = self.get(self.position) # get the vector's magintude and direction
+	    self.magnitude, self.direction = self.get(self.position) # get the vector's magintude and direction
 	
     # get the vector in magnitude and direction form
     def get(self, vector : list):
