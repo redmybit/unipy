@@ -49,6 +49,43 @@ class Vector:
         added_components = [a + b for a, b in zip(self.components, other.components)]
         return Vector(added_components)
 
+    # method for subtracting vectors
+    def __sub__(self, other):
+
+        # check if the vectors have the same length
+        self.check(other)
+        
+        subtracted_components = [a - b for a, b in zip(self.components, other.components)]
+        return Vector(subtracted_components)
+
+    # mutliplies the vectors
+    def __mul__(self, other):
+        if isinstance(other, (int, float)):  # Scalar multiplication
+            multiplied_components = [a * other for a in self.components]
+        elif isinstance(other, Vector):  # Element-wise multiplication
+            # check if the vectors have the same length
+            self.check(other)
+            multiplied_components = [a * b for a, b in zip(self.components, other.components)]
+        else:
+            raise TypeError("Operand must be a scalar (int or float) or another Vector.")
+        return Vector(multiplied_components)
+
+    # true divides the vectors
+    def __truediv__(self, other):
+        if isinstance(other, (int, float)):  # Scalar division
+            if other == 0:
+                raise ZeroDivisionError("Division by zero is not allowed.")
+            divided_components = [a / other for a in self.components]
+        elif isinstance(other, Vector):  # Element-wise division
+            # check if both vectors have the same length
+            self.check(other)
+            if any(b == 0 for b in other.components):
+                raise ZeroDivisionError("Element-wise division by zero is not allowed.")
+            divided_components = [a / b for a, b in zip(self.components, other.components)]
+        else:
+            raise TypeError("Operand must be a scalar (int or float) or another Vector.")
+        return Vector(divided_components)
+
     # string-representation of a vector
     def __repr__(self):
         return f"Vector({self.components})"
