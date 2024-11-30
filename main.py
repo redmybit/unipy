@@ -5,10 +5,10 @@ class Vector:
     def __init__(self, components = [0, 0]) -> None:
         self.components = components # set the vector's components
 	    
-	self.magnitude = 0
-	self.direction = []
-	    
-	self.updated() # update the vectors magnitude and direction
+        self.magnitude = 0
+        self.direction = []
+
+        self.updated() # update the vectors magnitude and direction
 
     # updates the vector's magnitude and direction based off it's components
     def update(self):
@@ -32,14 +32,20 @@ class Vector:
         components = [magnitude * direction for direction in directions]
         return components
 
-    # function for adding the vectors
-    def __add__(self, other):
-
-        # check if the vectors have the same length
-        if len(self.components) != len(other.components):
+    # checks if the vectors have the same length
+    def check(self, vector):
+        if len(self.components) != len(vector.components):
+            # throw an error
             raise ValueError("Vectors must have the same number of dimensions to add.")
 
-        # Component-wise addition
+        return true
+
+    # function for adding the vectors
+    def __add__(self, other):
+        # check if the vectors have the same length
+        self.check(other)
+
+        # component-wise addition
         added_components = [a + b for a, b in zip(self.components, other.components)]
         return Vector(added_components)
 
